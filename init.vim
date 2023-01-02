@@ -37,4 +37,4 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
 
-nnoremap <A-n> :vs <CR> :term echo "Compiling" && g++ a.cpp -o a && echo "Done" && time ./a && cat a.out <CR>
+nnoremap <A-n> :vs <CR> :term echo "Compiling" && g++ a.cpp -o a && echo "Done" && time ./a <CR>
