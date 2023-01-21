@@ -36,10 +36,11 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+Plug 'goolord/alpha-nvim'
 
 call plug#end()
 
-"Theme
+" Theme
 let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
@@ -54,7 +55,7 @@ let g:lightline = {
       \ },
       \ }
 
-"Nvim-tree
+" Nvim-tree
 lua << EOF
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
@@ -86,7 +87,7 @@ require("nvim-tree").setup({
 })
 EOF
 
-"Nvim-web-devicons
+" Nvim-web-devicons
 lua << EOF
 require'nvim-web-devicons'.setup {
  -- your personnal icons can go here (to override)
@@ -109,7 +110,7 @@ require'nvim-web-devicons'.setup {
 }
 EOF
 
-"barbar.nvim
+" Barbar.nvim
 " Move to previous/next
 nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
 nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
@@ -160,7 +161,7 @@ nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 " :BarbarEnable - enables barbar (enabled by default)
 " :BarbarDisable - very bad command, should never be used
 
-"Tabnine
+" Tabnine
 lua << EOF
 require('tabnine').setup({
   disable_auto_comment=true,
@@ -172,7 +173,12 @@ require('tabnine').setup({
 })
 EOF
 
-"Keybindings
+" Alpha-nvim
+lua << EOF
+require'alpha'.setup(require'alpha.themes.startify'.config)
+EOF
+
+" Keybindings
 nnoremap <A-n> :vs <CR> :term echo "Compiling" && g++ a.cpp -o a && echo "Done" && time ./a <CR>
 nnoremap <A-e> :NvimTreeToggle <CR>
 nnoremap <A-S-e> : NvimTreeFocus <CR>
